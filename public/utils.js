@@ -1,6 +1,5 @@
 
 function isNearBottom(el, threshold = 0) {
-    console.log(el.scrollHeight - el.scrollTop - el.clientHeight)
   return el.scrollHeight - el.scrollTop - el.clientHeight < threshold;
 }
 
@@ -17,7 +16,6 @@ const utils = {
 
         let imageFound = false;
         if (files && files.length > 0) {
-            console.log(files)
             files.forEach(file => {
                 const fileName = file.name
                 const fileUrl = file.url
@@ -120,4 +118,7 @@ const utils = {
         }
         input.focus()
     },
+    OnInputSubmit : (event) => {
+        
+    }
 }

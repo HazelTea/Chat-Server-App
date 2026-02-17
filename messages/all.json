@@ -1,5 +1,7 @@
 {
   "permitted_ips": [],
-  "banned_ips": [],
+  "banned_ips": [
+    "::ffff:172.22.4.116"
+  ],
   "messages": []
 }

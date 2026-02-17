@@ -53,11 +53,13 @@ io.on("connection", (socket) => {
   });
 
   socket.on("msg_send", (data) => {
+    const chatObject = utils.ReadJSON(`messages/${data.chat}.json`)
+    if (!utils.CheckUserPermitted(clientIp,chatObject)) return
     if ((data.message && data.message.length > 0) || (data.files && data.files.length > 0)) {
       const msg = {
         username: socket.username || "None",
         ip: clientIp,
-        message: data.message || "",
+        message: data.message.replaceAll(/\n+/g, '\n') || "",
         files: data.files || [],
         chat: data.chat,
       }

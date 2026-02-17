@@ -13,6 +13,8 @@ const chatMessageTemplate = document.getElementById("chat_msg_template").content
 const fileFrameTemplate = document.getElementById("file_frame_template").content
 const imageFrameTemplate = document.getElementById("image_frame_template").content
 
+input.focus()
+
 const messages = fetch('/messages?chat=all')
 messages.then((res) => {
     res.json().then((res) => {
@@ -25,6 +27,12 @@ messages.then((res) => {
         });
     })
 })
+
+input.addEventListener("keypress",(e) => {
+    if(e.key === "Enter" && !e.shiftKey) {
+        utils.OnFormSubmit(e)
+    }
+});
 
 socket.emit("set username", "username");
 socket.on("msg_send", (data) => utils.CreateTaskElement(data));

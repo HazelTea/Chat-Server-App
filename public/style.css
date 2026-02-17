@@ -43,6 +43,11 @@ body {
 
 #chat_input_field {
     width: 30vw;
+    white-space: pre;
+    height: 20px;
+    align-self: center;
+    resize: none;
+    margin: 0;
 }
 
 #user_frame {
@@ -108,6 +113,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    white-space: pre;
     transition: background-color 0.25s;
     padding: 10px 20px;
 }
