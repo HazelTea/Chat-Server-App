@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAN Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <template id="chat_msg_template">
+    <div class="chat__msg__frame" name="frame">
+      <p class="chat__msg__author" name="author">Hazel</p>
+      <p class="chat__msg__content" name="content">Lubie placki z syropem klonowym</p>
+      <div class="chat__msg__images" name="images"></div>
+      <div class="chat__msg__files" name="files"></div>
+    </div>
+  </template>
+  <template id="file_frame_template">
+    <a href="#" class="chat__msg__file__frame" name="file_frame">
+      <img class="chat__msg__file__icon" src="assets/images/file-icon3.svg">
+      <u class="chat__msg__file__file_name" name="file_name"></u>
+    </a>
+  </template>
+  <template id="image_frame_template">
+    <div class="chat__msg__image__frame" name="image_frame">
+      <img class="chat__msg__image" name="image">
+      <a name="button"><img class="chat__msg__image__button" src="assets/images/download-icon.svg"></a>
+    </div>
+  </template>
+<div id="frames">
+  <div id="logs_frame">
+  </div>
+  <div id="image__full_view__frame">
+    <img src="uploads/f66e86da40eea6645e6a738c28a82021" name="image" class="image__full_view">
+  </div>
+  <div id="chat_frame">
+    <div class="chat__msg_list" id="chat_msg_list"></div>
+    <form class="chat__form" id="chat_form">
+      <input type="text" id="chat_input_field" autocomplete="off" rows="100" minlength="0" maxlength="1024"/>
+      <button>Send</button>
+      <input type="file" id="chat_file_sender" multiple/>
+    </form>
+  </div>
+  <div id="user_frame">
+  </div>
+</div>
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="utils.js"></script>
+  <script src="index.js"></script>
+
+</body>
+</html>
