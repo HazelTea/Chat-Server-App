@@ -11,7 +11,7 @@
   <template id="chat_msg_template">
     <div class="chat__msg__frame" name="frame">
       <p class="chat__msg__author" name="author">Hazel</p>
-      <p class="chat__msg__content" name="content">Lubie placki z syropem klonowym</p>
+      <div class="chat__msg__content" name="content">Lubie placki z syropem klonowym</div>
       <div class="chat__msg__images" name="images"></div>
       <div class="chat__msg__files" name="files"></div>
     </div>
@@ -32,17 +32,19 @@
   <div id="logs_frame">
   </div>
   <div id="image__full_view__frame">
-    <img src="uploads/f66e86da40eea6645e6a738c28a82021" name="image" class="image__full_view">
+    <img name="image" class="image__full_view">
   </div>
   <div id="chat_frame">
     <div class="chat__msg_list" id="chat_msg_list"></div>
-    <form class="chat__form" id="chat_form">
-      <textarea form="chat_file_sender" id="chat_input_field" autocomplete="off" rows="100" cols="0" maxlength="1024"></textarea>
-      <button>Send</button>
-      <input type="file" id="chat_file_sender" multiple/>
-    </form>
-  </div>
-  <div id="user_frame">
+    <div class="form__frame">
+      <form class="chat__form" id="chat_form">
+        <div class="chat__input__background">
+          <textarea form="chat_form" id="chat_input_field" autocomplete="off" autocorrect="off" rows="100" cols="0" placeholder="Send a message." maxlength="1024"></textarea>
+        </div>
+        <button class="chat__form__button">Send</button>
+        <input class="chat__form__button" type="file" id="chat_file_sender" multiple/>
+      </form>
+    </div>
   </div>
 </div>
 

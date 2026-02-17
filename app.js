@@ -59,7 +59,7 @@ io.on("connection", (socket) => {
       const msg = {
         username: socket.username || "None",
         ip: clientIp,
-        message: data.message.replaceAll(/\n+/g, '\n') || "",
+        message: data.message ? data.message.replaceAll(/\n+/g, '\n') : "",
         files: data.files || [],
         chat: data.chat,
       }

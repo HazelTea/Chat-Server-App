@@ -39,20 +39,67 @@ body {
     gap: 0px;
     width: 60%;
     height: 100%;
+    overflow-x:none;
 }
 
 #chat_input_field {
-    width: 30vw;
+    width: 60%;
     white-space: pre;
-    height: 20px;
-    align-self: center;
+    position: relative;
     resize: none;
     margin: 0;
+    border: 0;
+    stroke: none;
+    height: 1em;
+    text-align: start;
+    padding-left: 10px;
 }
 
-#user_frame {
-    width: 20%;
+#chat_input_field::placeholder {
+    font-style: "Instrument Sans";
+    color: #a1a1a1;
 }
+
+.chat__input__background {
+    position: relative;
+    display: flex;
+    align-items: end;
+    background-color: white;
+    height: fit-content;
+    padding: 10px 0px;
+    border-radius: 5px;
+    border: solid 1px #a1a1a1;
+    margin-left: 20px;
+    width: 100%;
+}
+
+#chat_input_field:focus {
+    outline: none;
+}
+
+.form__frame {
+    margin: 0;
+    width:100%;
+    height:10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.chat__form {
+    height:35px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    align-self: center;
+}
+
+.chat__form__button {
+    height: 100%;
+}
+
 @keyframes img_full_view_background {
   from {opacity: 0;}
   to {opacity:1}
@@ -82,17 +129,12 @@ body {
 
 .image__full_view {
     position: relative;
-    max-width: 23vw ;
+    width: 18vw;
     box-shadow: 10px 10px 15px rgba(0,0,0,0.5);
     cursor:zoom-out;
     animation-name: img_full_view_scale;
     animation-iteration-count: 1;
     animation-duration: 0.25s;
-}
-
-.chat__form {
-    height:5%;
-    align-self: end;
 }
 
 .chat__msg_list {
@@ -109,13 +151,15 @@ body {
 
 .chat__msg__frame {
     position: relative;
-    width:auto;
+    width: calc(100% - 5px);
     display: flex;
     flex-direction: column;
     gap: 5px;
     white-space: pre;
     transition: background-color 0.25s;
-    padding: 10px 20px;
+    padding-left: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 .chat__msg__frame:hover {
@@ -131,6 +175,12 @@ body {
 
 .chat__msg__content {
     font-size: 0.8em;
+    gap: 5px;
+    line-height: 1.5em;
+    overflow-wrap: break-word;
+    width: 700px;
+    height: auto;
+    /* letter-spacing: 0.5px; */
     margin-left: 5px;
     margin-top: 0;
     margin-bottom: 0;
@@ -138,17 +188,16 @@ body {
 
 .chat__msg__images {
     display: flex;
-    gap: 5px;
+    gap: 0px;
     width: 580px;
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-rows: min-content;
+    display: none;
+    flex-direction: row;
     height: 100%;
     overflow-x: auto;
     overflow-y: hidden;
-    align-items:center;
     max-height: 220px;
     margin-left: 5px;
+    padding-bottom: 5px;
 
     scrollbar-width: thin;
     scrollbar-color:white transparent;
@@ -157,6 +206,9 @@ body {
 .chat__msg__image__frame {
     height: 200px;
     width: 200px;
+    padding: 3px;
+    /* display: flex; */
+    /* align-items: center; */
 }
 
 .chat__msg__image__frame:hover > img {
@@ -175,25 +227,30 @@ body {
     padding: 3px;
     height: 100%;
     width: 100%;
+    position: relative;
+    top: -10%;
+    left: -10%;
+    align-self: center;
     transition: box-shadow 0.25s, filter 0.25s;
-    object-fit:cover;
+    object-fit: cover;
+    cursor: pointer;
     z-index: 2;
-    cursor:pointer;
 }
 
 .chat__msg__image__button {
     opacity: 0;
-    position: relative;
-    height: 30px;
-    width: 30px;
-    top:-102%;
-    left:3%;
-    z-index: 1;
+    position:relative;
+    align-self: center;
+    height: 27px;
+    width: 27px;
+    top:-110%;
+    left:-6%;
+    z-index: 2;
     transition: opacity 0.2s;
 }
 
 .chat__msg__files {
-    display: flex;
+    display: none;
     height: fit-content;
     width: 220px;
     flex-direction: row;
@@ -203,9 +260,9 @@ body {
 }
 
 .chat__msg__file__frame {
-    min-width: 9vw;
+    min-width: 200px;
     width: max-content;
-    height: 1.3vw;
+    height: 30px;
     background-color: #d9dbff;
     
     display: flex;
@@ -229,8 +286,8 @@ body {
 
 .chat__msg__file__icon {
     scale: 1;
-    width: 1vw;
-    height: 1vw;
+    width: 25px;
+    height: 25px;
     position: relative;
     display: inline-block;
 }

@@ -21,6 +21,7 @@ const utils = {
                 const fileUrl = file.url
                 const isImage = fileName.match(/\.(jpg|png|gif)$/)
                 if (isImage) {
+                    frame_images.style.display = "flex"
                     imageFound = true
                     const imgFrame = imageFrameTemplate.cloneNode(true).children.image_frame;
                     const children = imgFrame.children
@@ -37,6 +38,7 @@ const utils = {
                     })
 
                 } else {
+                    frame_files.style.display = "flex"
                     const fileFrame = fileFrameTemplate.cloneNode(true).children.file_frame;
                     fileFrame.href = fileUrl;
                     fileFrame.download = fileName;
@@ -61,12 +63,7 @@ const utils = {
 
         chatList.appendChild(message);
 
-        if (chatList && shouldScroll) {
-            chatList.scrollTo({
-                top: chatList.scrollHeight,
-                behavior: "smooth"
-            });
-        }
+        if (chatList && shouldScroll) utils.ScrollToBottom()
     }, 
     OnFormSubmit : async (event) => {
         event.preventDefault();
@@ -101,24 +98,42 @@ const utils = {
         emitJson.chat = "all"
         if (input.value || files) socket.emit("msg_send", emitJson);
         input.value = "";
+        utils.UpdateInputPosition()
+        utils.ScrollToBottom()
         fileSender.value = "";
     },
     OnChatFilesPasted : (event) => {
         const items = event.clipboardData.items;
+        let hasFiles = false
         if (items.length > 0) {
             const dataTransfer = new DataTransfer()
             for (let i = 0; i < items.length; i++) {
                 const item = items[i];
                 if (item.kind === "file") {
+                    hasFiles = true
                     const file = item.getAsFile();
                     dataTransfer.items.add(file)
                 }
             }
-            fileSender.files = dataTransfer.files
+            if (hasFiles) {
+                
+                event.preventDefault()
+                fileSender.files = dataTransfer.files
+                console.log(input)
+                input.focus()
+            }
         }
-        input.focus()
     },
-    OnInputSubmit : (event) => {
-        
+    UpdateInputPosition : (event) => {  
+        input.style.height = "";
+        input.style.height = `calc( ${input.scrollHeight}px - 0.5em)`
+        input.parentElement.style.bottom = `calc( ${input.scrollHeight / 2 - 10}px)`
+    },
+
+    ScrollToBottom : () => {
+        chatList.scrollTo({
+            top: chatList.scrollHeight,
+            behavior: "smooth"
+        });
     }
 }

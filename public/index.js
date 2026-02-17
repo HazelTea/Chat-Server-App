@@ -21,10 +21,7 @@ messages.then((res) => {
         res.messages.forEach(message => {
             utils.CreateTaskElement(message)
         });
-        chatList.scrollTo({
-            top: chatList.scrollHeight,
-            behavior: "smooth"
-        });
+        utils.ScrollToBottom()
     })
 })
 
@@ -34,9 +31,12 @@ input.addEventListener("keypress",(e) => {
     }
 });
 
+input.addEventListener("input", utils.UpdateInputPosition) 
+
 socket.emit("set username", "username");
 socket.on("msg_send", (data) => utils.CreateTaskElement(data));
 
+fileSender.addEventListener("click", () => input.focus())
 imageFullViewFrame.addEventListener("click", () => imageFullViewFrame.style.display = "none")
 chatFrame.addEventListener("paste", (e) => utils.OnChatFilesPasted(e))
 form.addEventListener("submit", (e) => utils.OnFormSubmit(e));
