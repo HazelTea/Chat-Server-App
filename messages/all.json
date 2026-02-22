@@ -1,15 +1,1 @@
-{
-  "permitted_ips": [],
-  "banned_ips": [
-    "::ffff:172.22.4.116"
-  ],
-  "messages": [
-    {
-      "username": "username",
-      "ip": "::1",
-      "message": "aaaaaa\nbbbbb\nccccddd\neeeeF\ngggg\n",
-      "files": [],
-      "chat": "all"
-    }
-  ]
-}
+{"permitted_ips":[], "banned_ips":[],"messages":[]}

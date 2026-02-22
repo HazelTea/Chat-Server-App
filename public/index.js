@@ -40,3 +40,5 @@ fileSender.addEventListener("click", () => input.focus())
 imageFullViewFrame.addEventListener("click", () => imageFullViewFrame.style.display = "none")
 chatFrame.addEventListener("paste", (e) => utils.OnChatFilesPasted(e))
 form.addEventListener("submit", (e) => utils.OnFormSubmit(e));
+
+utils.UpdateInputPosition()

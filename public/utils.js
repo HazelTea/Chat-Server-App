@@ -124,10 +124,11 @@ const utils = {
             }
         }
     },
-    UpdateInputPosition : (event) => {  
+    UpdateInputPosition : (event) => {
         input.style.height = "";
-        input.style.height = `calc( ${input.scrollHeight}px - 0.5em)`
-        input.parentElement.style.bottom = `calc( ${input.scrollHeight / 2 - 10}px)`
+        const scrollHeight = input.scrollHeight
+        input.style.height = `calc( ${scrollHeight}px)`
+        input.parentElement.style.bottom = `calc(${scrollHeight / 2}px - 0.47em)`
     },
 
     ScrollToBottom : () => {
