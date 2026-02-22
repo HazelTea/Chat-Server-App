@@ -3,5 +3,13 @@
   "banned_ips": [
     "::ffff:172.22.4.116"
   ],
-  "messages": []
+  "messages": [
+    {
+      "username": "username",
+      "ip": "::1",
+      "message": "aaaaaa\nbbbbb\nccccddd\neeeeF\ngggg\n",
+      "files": [],
+      "chat": "all"
+    }
+  ]
 }
